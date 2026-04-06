@@ -18,7 +18,6 @@ import org.springframework.util.StringUtils;
 import java.security.Key;
 import java.util.Base64;
 import java.util.Date;
-import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @Component
@@ -36,8 +35,6 @@ public class JwtUtil {
     public void init() {
         byte[] bytes = Base64.getDecoder().decode(secretKey);
         key = Keys.hmacShaKeyFor(bytes);
-        // 임시 테스트 코드 (디코딩 없이 바로 사용)
-        key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
     }
 
     public String createToken(User user) {
