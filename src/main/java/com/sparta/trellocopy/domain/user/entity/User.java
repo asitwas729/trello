@@ -14,9 +14,10 @@ import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-@SQLDelete(sql = "UPDATE user SET deleted = true WHERE user_id = ?")
+@SQLDelete(sql = "UPDATE users SET deleted = true WHERE users_id = ?")
 @SQLRestriction("deleted = false")
 @Entity
+@Table(name = "users")
 public class User extends Timestamped {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
